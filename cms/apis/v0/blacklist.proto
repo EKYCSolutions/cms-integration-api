@@ -1,0 +1,34 @@
+
+syntax = "proto3";
+
+package cms.api.v0;
+
+import "google/protobuf/timestamp.proto";
+
+import "cms/common/v0/biometric_info.proto";
+import "cms/common/v0/personal_profile.proto";
+import "cms/common/v0/search_request_filter.proto";
+
+message SearchBlacklistRequest {
+  cms.common.v0.SearchRequestFilter filter = 1;
+  uint32 page_size = 2;
+  uint32 page_number = 3;
+}
+
+message SearchBlacklistResponse {
+  uint32 total_matches = 1;
+  repeated BlacklistData data = 2;
+}
+
+message BlacklistData {
+  string id = 1;
+  optional cms.common.v0.PersonalInfo personal_info = 2;
+  optional cms.common.v0.BiometricInfo biometric_info = 3;
+  optional string reason = 4;
+  optional google.protobuf.Timestamp blacklist_datetime = 5;
+}
+
+service Blacklist {
+  rpc SearchBlacklist(SearchBlacklistRequest) returns (SearchBlacklistResponse);
+}
+

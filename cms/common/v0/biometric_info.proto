@@ -1,0 +1,21 @@
+
+syntax = "proto3";
+
+package cms.common.v0;
+
+message BiometricInfo {
+  optional string left_face_image_url = 6;
+  optional string front_face_image_url = 7;
+  optional string right_face_image_url = 8;
+  optional string left_pinky_finger_image_url = 9;
+  optional string left_ring_finger_image_url = 10;
+  optional string left_middle_finger_image_url = 11;
+  optional string left_index_finger_image_url = 12;
+  optional string left_thumb_finger_image_url = 13;
+  optional string right_pinky_finger_image_url = 14;
+  optional string right_ring_finger_image_url = 15;
+  optional string right_middle_finger_image_url = 16;
+  optional string right_index_finger_image_url = 17;
+  optional string right_thumb_finger_image_url = 18;
+}
+

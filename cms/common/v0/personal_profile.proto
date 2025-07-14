@@ -1,0 +1,37 @@
+
+syntax = "proto3";
+
+package cms.common.v0;
+
+import "google/protobuf/timestamp.proto";
+
+import "cms/common/gender.proto";
+
+message PersonalInfo {
+  optional string last_name_khm = 1;
+  optional string first_name_khm = 2;
+  optional string last_name_eng = 3;
+  optional string first_name_eng = 4;
+  optional uint32 weight_in_kg = 5;
+  optional string distinguishable_features_description = 6;
+  optional google.protobuf.Timestamp date_of_birth = 7;
+  optional string nationality_in_iso31661alpha3 = 8;
+  optional string ethnicity = 9;
+  optional string national_id = 10;
+  optional string passport_number = 11;
+  optional cms.common.Gender sex = 12;
+  optional uint32 height_in_cm = 13;
+  optional string birth_place_province = 14;
+  optional string birth_place_district = 15;
+  optional string birth_place_commune = 16;
+  optional string birth_place_village = 17;
+  optional string birth_place_house_label = 18;
+  optional string birth_place_street_label = 19;
+  optional string current_living_address_province = 20;
+  optional string current_living_address_district = 21;
+  optional string current_living_address_commune = 22;
+  optional string current_living_address_village = 23;
+  optional string current_living_address_house_label = 24;
+  optional string current_living_address_street_label = 25;
+}
+

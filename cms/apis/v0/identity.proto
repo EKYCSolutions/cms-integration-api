@@ -1,0 +1,33 @@
+
+syntax = "proto3";
+
+package cms.apis.v0;
+
+import "cms/common/gender.proto";
+
+message RegisterIdentityRequest {
+  string identity_id = 1;
+  uint32 age = 2;
+  uint32 height_in_cm = 3;
+  cms.common.Gender gender = 4;
+  optional bytes left_face = 5;
+  optional bytes front_face = 6;
+  optional bytes right_face = 7;
+  optional bytes left_pinky_finger = 8;
+  optional bytes left_ring_finger = 9;
+  optional bytes left_middle_finger = 10;
+  optional bytes left_index_finger = 11;
+  optional bytes left_thumb_finger = 12;
+  optional bytes right_pinky_finger = 13;
+  optional bytes right_ring_finger = 14;
+  optional bytes right_middle_finger = 15;
+  optional bytes right_index_finger = 16;
+  optional bytes right_thumb_finger = 17;
+}
+
+message RegisterIdentityResponse {}
+
+service Identity {
+  rpc RegisterIdentity(RegisterIdentityRequest) returns (RegisterIdentityResponse);
+}
+

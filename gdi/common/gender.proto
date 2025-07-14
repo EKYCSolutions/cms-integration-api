@@ -1,0 +1,9 @@
+
+syntax = "proto3";
+
+package gdi.common;
+
+enum Gender {
+  MALE = 0;
+  FEMALE = 1;
+}

@@ -1,0 +1,68 @@
+
+syntax = "proto3";
+
+package gdi.apis.v0;
+
+import "google/protobuf/timestamp.proto";
+
+import "gdi/common/gender.proto";
+
+message SearchIdentityRequest {
+  optional string name = 1; /** name to search, could be in full name or partial. eg: socret */
+  optional uint32 age = 2; /** age to filter. eg: 32 */
+  optional uint32 height_in_cm = 3; /** height to filter. eg: 160 */
+  optional gdi.common.Gender gender = 4; /** height to filter. eg: MALE */
+  optional bytes left_face_image = 5; /** left face image to filter. eg: [ensure jpeg file] */
+  optional bytes front_face_image = 6; /** front face image to filter. eg: [ensure jpeg file] */
+  optional bytes right_face_image = 7; /** right face image to filter. eg: [ensure jpeg file] */
+  optional bytes left_pinky_finger_image = 8; /** left pinky finger image to filter. eg: [ensure jpeg file] */
+  optional bytes left_ring_finger_image = 9; /** left ring finger image to filter. eg: [ensure jpeg file] */
+  optional bytes left_middle_finger_image = 10; /** left middle finger image to filter. eg: [ensure jpeg file] */
+  optional bytes left_index_finger_image = 11; /** left index finger image image to filter. eg: [ensure jpeg file] */
+  optional bytes left_thumb_finger_image = 12; /** left thumb finger image image to filter. eg: [ensure jpeg file] */
+  optional bytes right_pinky_finger_image = 13; /** right pinky finger image image to filter. eg: [ensure jpeg file] */
+  optional bytes right_ring_finger_image = 14; /** right ring finger image image to filter. eg: [ensure jpeg file] */
+  optional bytes right_middle_finger_image = 15; /** right middle finger image image to filter. eg: [ensure jpeg file] */
+  optional bytes right_index_finger_image = 16; /** right index finger image image to filter. eg: [ensure jpeg file] */
+  optional bytes right_thumb_finger_image = 17; /** right thumb finger image image to filter. eg: [ensure jpeg file] */
+}
+
+message SearchIdentityResponse {
+  optional string last_name_khm = 1; /** last name in khmer. eg: សុក្រិត */
+  optional string first_name_khm = 2; /** first name in khmer. eg: លី */
+  optional string last_name_eng = 3; /** last name in english. eg: socret */
+  optional string first_name_eng = 4; /** first name in english. eg: ly */
+  optional uint32 weight_in_kg = 5; /** weight in kg. eg: 60 */
+  optional string distinguishable_features_description = 6; /** the person identifiable features. eg: has tattoo on left cheek */
+  optional google.protobuf.Timestamp date_of_birth = 7; /** date of birth: 1990-01-01T00:30:22Z */
+  optional string nationality_in_iso31661alpha3 = 8; /** nationality in iso31661 alhpa3 format. eg: afg (afghanistan) */
+  optional string ethnicity = 9; /** the person ethnicity, eg: asian */
+  optional string national_id = 10; /** national id, eg: 121233330 */
+  optional string passport_number = 11; /** passport number, eg: 121233330 */
+  optional gdi.common.Gender sex = 12; /** the person gender, eg: FEMALE */
+  optional uint32 height_in_cm = 13; /** the person height in cm, eg: 160 */
+  optional string birth_place_province = 14; /** eg: Phnom Penh */
+  optional string birth_place_district = 15; /** eg: Monorom */
+  optional string birth_place_commune = 16; /** eg: Psa Tmey 2 */
+  optional string birth_place_village = 17; /** eg: Phum 99 */
+  optional string birth_place_house_label = 18; /** eg: tk, 256 */
+  optional string birth_place_street_label = 19; /** eg: st952 */
+  optional string current_living_address_province = 20; /** eg: Phnom Penh */
+  optional string current_living_address_district = 21; /** eg: Monorom */
+  optional string current_living_address_commune = 22; /** eg: Psa Tmey 2 */
+  optional string current_living_address_village = 23; /** eg: Phum 99 */
+  optional string current_living_address_house_label = 24; /** eg: tk, 256 */
+  optional string current_living_address_street_label = 25; /** eg: st952 */
+  optional string profile_image_download_url = 26; /** eg: https://acme.org/identity/1111-1111-1111-1111/profile-image.jpg */
+}
+
+/**
+ * GDI identity service
+ */
+service Identity {
+  /**
+   * Search and return tops identity by set of filters
+   */
+  rpc SearchIdentity(SearchIdentityRequest) returns (SearchIdentityResponse);
+}
+
