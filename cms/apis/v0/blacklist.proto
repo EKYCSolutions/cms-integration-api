@@ -5,8 +5,8 @@ package cms.api.v0;
 
 import "google/protobuf/timestamp.proto";
 
+import "cms/common/v0/personal_info.proto";
 import "cms/common/v0/biometric_info.proto";
-import "cms/common/v0/personal_profile.proto";
 import "cms/common/v0/search_request_filter.proto";
 
 message SearchBlacklistRequest {
