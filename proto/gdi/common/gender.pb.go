@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: gdi/common/gender.proto
 
-package common
+package gdicommon
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"

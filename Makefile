@@ -24,10 +24,10 @@ go.generate:
 	protoc\
 		--go_out=proto\
 		--go_opt=paths=source_relative\
-		--go_opt=Mgdi/common/gender.proto=$(go_module_path)/gdi/common\
-		--go_opt=Mgdi/apis/v0/identity.proto=$(go_module_path)/gdi/apis/v0\
+		--go_opt="Mgdi/common/gender.proto=$(go_module_path)/gdi/common;gdicommon"\
+		--go_opt="Mgdi/apis/v0/identity.proto=$(go_module_path)/gdi/apis/v0;gdiapisv0"\
 		--go-grpc_out=proto\
 		--go-grpc_opt=paths=source_relative\
-		--go-grpc_opt=Mgdi/common/gender.proto=$(go_module_path)/gdi/common\
-		--go-grpc_opt=Mgdi/apis/v0/identity.proto=$(go_module_path)/gdi/apis/v0\
+		--go-grpc_opt="Mgdi/common/gender.proto=$(go_module_path)/gdi/common;gdicommon"\
+		--go-grpc_opt="Mgdi/apis/v0/identity.proto=$(go_module_path)/gdi/apis/v0;gdiapisv0"\
 		gdi/common/*.proto gdi/apis/**/*.proto

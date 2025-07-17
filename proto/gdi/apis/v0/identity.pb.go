@@ -4,7 +4,7 @@
 // 	protoc        v5.29.3
 // source: gdi/apis/v0/identity.proto
 
-package v0
+package gdiapisv0
 
 import (
 	common "github.com/EKYCSolutions/cms-integration-api/proto/gdi/common"
@@ -42,6 +42,8 @@ type SearchIdentityRequest struct {
 	RightMiddleFingerImage []byte                 `protobuf:"bytes,15,opt,name=right_middle_finger_image,json=rightMiddleFingerImage,proto3,oneof" json:"right_middle_finger_image,omitempty"` //* right middle finger image image to filter. eg: [ensure jpeg file]
 	RightIndexFingerImage  []byte                 `protobuf:"bytes,16,opt,name=right_index_finger_image,json=rightIndexFingerImage,proto3,oneof" json:"right_index_finger_image,omitempty"`    //* right index finger image image to filter. eg: [ensure jpeg file]
 	RightThumbFingerImage  []byte                 `protobuf:"bytes,17,opt,name=right_thumb_finger_image,json=rightThumbFingerImage,proto3,oneof" json:"right_thumb_finger_image,omitempty"`    //* right thumb finger image image to filter. eg: [ensure jpeg file]
+	NationalId             *string                `protobuf:"bytes,18,opt,name=national_id,json=nationalId,proto3,oneof" json:"national_id,omitempty"`                                         //* national id to filter, eg: 3333
+	PassportNumber         *string                `protobuf:"bytes,19,opt,name=passport_number,json=passportNumber,proto3,oneof" json:"passport_number,omitempty"`                             //* passport number to filter, eg: 2222
 	unknownFields          protoimpl.UnknownFields
 	sizeCache              protoimpl.SizeCache
 }
@@ -193,6 +195,20 @@ func (x *SearchIdentityRequest) GetRightThumbFingerImage() []byte {
 		return x.RightThumbFingerImage
 	}
 	return nil
+}
+
+func (x *SearchIdentityRequest) GetNationalId() string {
+	if x != nil && x.NationalId != nil {
+		return *x.NationalId
+	}
+	return ""
+}
+
+func (x *SearchIdentityRequest) GetPassportNumber() string {
+	if x != nil && x.PassportNumber != nil {
+		return *x.PassportNumber
+	}
+	return ""
 }
 
 type SearchIdentityResponse struct {
@@ -443,8 +459,7 @@ var File_gdi_apis_v0_identity_proto protoreflect.FileDescriptor
 
 const file_gdi_apis_v0_identity_proto_rawDesc = "" +
 	"\n" +
-	"\x1agdi/apis/v0/identity.proto\x12\vgdi.apis.v0\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x17gdi/common/gender.proto\"\x94\n" +
-	"\n" +
+	"\x1agdi/apis/v0/identity.proto\x12\vgdi.apis.v0\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x17gdi/common/gender.proto\"\x8c\v\n" +
 	"\x15SearchIdentityRequest\x12\x17\n" +
 	"\x04name\x18\x01 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x15\n" +
 	"\x03age\x18\x02 \x01(\rH\x01R\x03age\x88\x01\x01\x12%\n" +
@@ -465,7 +480,10 @@ const file_gdi_apis_v0_identity_proto_rawDesc = "" +
 	"\x17right_ring_finger_image\x18\x0e \x01(\fH\rR\x14rightRingFingerImage\x88\x01\x01\x12>\n" +
 	"\x19right_middle_finger_image\x18\x0f \x01(\fH\x0eR\x16rightMiddleFingerImage\x88\x01\x01\x12<\n" +
 	"\x18right_index_finger_image\x18\x10 \x01(\fH\x0fR\x15rightIndexFingerImage\x88\x01\x01\x12<\n" +
-	"\x18right_thumb_finger_image\x18\x11 \x01(\fH\x10R\x15rightThumbFingerImage\x88\x01\x01B\a\n" +
+	"\x18right_thumb_finger_image\x18\x11 \x01(\fH\x10R\x15rightThumbFingerImage\x88\x01\x01\x12$\n" +
+	"\vnational_id\x18\x12 \x01(\tH\x11R\n" +
+	"nationalId\x88\x01\x01\x12,\n" +
+	"\x0fpassport_number\x18\x13 \x01(\tH\x12R\x0epassportNumber\x88\x01\x01B\a\n" +
 	"\x05_nameB\x06\n" +
 	"\x04_ageB\x0f\n" +
 	"\r_height_in_cmB\t\n" +
@@ -482,7 +500,9 @@ const file_gdi_apis_v0_identity_proto_rawDesc = "" +
 	"\x18_right_ring_finger_imageB\x1c\n" +
 	"\x1a_right_middle_finger_imageB\x1b\n" +
 	"\x19_right_index_finger_imageB\x1b\n" +
-	"\x19_right_thumb_finger_image\"\x93\x11\n" +
+	"\x19_right_thumb_finger_imageB\x0e\n" +
+	"\f_national_idB\x12\n" +
+	"\x10_passport_number\"\x93\x11\n" +
 	"\x16SearchIdentityResponse\x12'\n" +
 	"\rlast_name_khm\x18\x01 \x01(\tH\x00R\vlastNameKhm\x88\x01\x01\x12)\n" +
 	"\x0efirst_name_khm\x18\x02 \x01(\tH\x01R\ffirstNameKhm\x88\x01\x01\x12'\n" +

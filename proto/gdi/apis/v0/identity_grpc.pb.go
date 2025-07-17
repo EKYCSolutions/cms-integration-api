@@ -4,7 +4,7 @@
 // - protoc             v5.29.3
 // source: gdi/apis/v0/identity.proto
 
-package v0
+package gdiapisv0
 
 import (
 	context "context"

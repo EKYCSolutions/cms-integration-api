@@ -25,6 +25,8 @@ message SearchIdentityRequest {
   optional bytes right_middle_finger_image = 15; /** right middle finger image image to filter. eg: [ensure jpeg file] */
   optional bytes right_index_finger_image = 16; /** right index finger image image to filter. eg: [ensure jpeg file] */
   optional bytes right_thumb_finger_image = 17; /** right thumb finger image image to filter. eg: [ensure jpeg file] */
+  optional string national_id = 18; /** national id to filter, eg: 3333 */
+  optional string passport_number = 19; /** passport number to filter, eg: 2222 */
 }
 
 message SearchIdentityResponse {
